@@ -20,22 +20,23 @@ import {
   Sun,
   Linkedin,
   Camera,
-  X
+  X,
+  Folder
 } from 'lucide-react';
 
 // --- Gallery Component ---
 
 const AIGallery = ({ onClose }: { onClose: () => void }) => {
-  const aiImages = [
-    "input_file_0.png",
-    "input_file_1.png",
-    "input_file_2.png",
-    "input_file_3.png",
-    "input_file_4.png",
-    "input_file_5.png",
-    "input_file_6.png",
-    "input_file_7.png",
-    "input_file_8.png",
+  const aiImages: string[] = [
+    "https://raw.githubusercontent.com/akshathashruthiram/Akshatha-Portfolio/a1cc784e2a6f6d66b5ce9304d4b8f9cad85cb33d/Taste_the_Summer_Trend_version_1.png",
+    "https://raw.githubusercontent.com/akshathashruthiram/Akshatha-Portfolio/a1cc784e2a6f6d66b5ce9304d4b8f9cad85cb33d/The_Morning_Prep_version_1.png",
+    "https://raw.githubusercontent.com/akshathashruthiram/Akshatha-Portfolio/a1cc784e2a6f6d66b5ce9304d4b8f9cad85cb33d/The_Perfect_Tint_version_1.png",
+    "https://raw.githubusercontent.com/akshathashruthiram/Akshatha-Portfolio/a1cc784e2a6f6d66b5ce9304d4b8f9cad85cb33d/Global_Glow_version_1.png",
+    "https://raw.githubusercontent.com/akshathashruthiram/Akshatha-Portfolio/a1cc784e2a6f6d66b5ce9304d4b8f9cad85cb33d/The_Glazed_Finish_version_1.png",
+    "https://raw.githubusercontent.com/akshathashruthiram/Akshatha-Portfolio/a1cc784e2a6f6d66b5ce9304d4b8f9cad85cb33d/pomelli-image%20(2).png",
+    "https://raw.githubusercontent.com/akshathashruthiram/Akshatha-Portfolio//a1cc784e2a6f6d66b5ce9304d4b8f9cad85cb33d/pomelli-image.png",
+    "https://raw.githubusercontent.com/akshathashruthiram/Akshatha-Portfolio/a1cc784e2a6f6d66b5ce9304d4b8f9cad85cb33d/pomelli-image%20(1).png",
+    "https://raw.githubusercontent.com/akshathashruthiram/Akshatha-Portfolio/a1cc784e2a6f6d66b5ce9304d4b8f9cad85cb33d/pomelli-image%20(3).png",
   ];
 
   return (
@@ -45,7 +46,7 @@ const AIGallery = ({ onClose }: { onClose: () => void }) => {
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-[100] bg-black text-white overflow-y-auto"
     >
-      <div className="sticky top-0 z-20 bg-black/80 backdrop-blur-sm border-b border-white/20 px-6 py-8 flex justify-between items-center">
+      <div className="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-white/20 px-6 py-8 flex justify-between items-center">
         <div className="space-y-1">
           <h2 className="text-4xl md:text-6xl font-pixel distorted-text uppercase leading-none">AI CONTENT</h2>
           <p className="text-xs font-pixel opacity-50 uppercase tracking-widest">A creative exploration of AI-generated aesthetics</p>
@@ -58,33 +59,77 @@ const AIGallery = ({ onClose }: { onClose: () => void }) => {
         </button>
       </div>
 
-      <div className="max-w-[1400px] mx-auto p-6 pt-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {aiImages.map((src, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: idx * 0.1 }}
-              className="group relative aspect-[3/4] overflow-hidden border border-white/10 brutal-border bg-[#111]"
-            >
-              <img 
-                src={src} 
-                alt={`AI Content ${idx + 1}`} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-8 text-center">
-                <p className="text-sm font-pixel leading-tight">SHOT_{idx + 1}.PNG</p>
+      <div className="max-w-[1400px] mx-auto p-6 md:p-12">
+        {/* --- Folder Section: Brand Campaign --- */}
+        <div className="mb-32">
+          <div className="flex flex-col lg:flex-row gap-8 items-end mb-16 border-b border-white/10 pb-8">
+            <div className="flex-1 space-y-4">
+              <div className="flex items-center gap-3 text-brand-blue">
+                <Folder size={20} />
+                <span className="font-pixel text-xs uppercase tracking-[0.2em]">PROJECT FOLDER</span>
               </div>
-            </motion.div>
-          ))}
+              <h3 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter">
+                Brand <br className="hidden md:block" /> campaign
+              </h3>
+            </div>
+            <div className="max-w-md text-right">
+              <p className="opacity-50 text-base md:text-lg leading-relaxed lowercase italic">
+                A conceptual visual study focusing on high-fashion minimalism and product-centric storytelling through the lens of generative tools.
+              </p>
+            </div>
+          </div>
+
+          {aiImages.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {aiImages.map((src, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.05 }}
+                  className="group relative aspect-[3/4] overflow-hidden border border-white/10 brutal-border bg-[#111]"
+                >
+                  <img 
+                    src={src} 
+                    alt={`AI Content ${idx + 1}`} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute top-4 left-4 z-10">
+                     <div className="bg-black/80 backdrop-blur-sm border border-white/20 px-2 py-1 text-[8px] font-pixel opacity-0 group-hover:opacity-100 transition-opacity">
+                        CAMPAIGN_01 // ASSET_{idx + 1}
+                     </div>
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    <p className="text-[10px] font-pixel leading-tight uppercase opacity-60">Creative Articulation</p>
+                    <p className="text-sm font-bold uppercase">Product Editorial Styling</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="py-40 flex flex-col items-center justify-center border border-dashed border-white/20 brutal-border bg-[#050505] text-center space-y-6">
+              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center opacity-40">
+                <Folder size={32} />
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-2xl font-pixel uppercase tracking-widest opacity-60">Folder Empty</h4>
+                <p className="text-xs font-pixel uppercase tracking-widest opacity-30 italic">Curating experimental assets... Please check back soon.</p>
+              </div>
+            </div>
+          )}
         </div>
         
-        <div className="py-24 text-center">
+        <div className="py-24 border-t border-white/10 flex flex-col items-center gap-8">
+          <div className="flex gap-4 items-center opacity-30 text-[10px] font-pixel mb-4">
+             <div className="w-12 h-[1px] bg-white"></div>
+             <span>END OF FOLDER</span>
+             <div className="w-12 h-[1px] bg-white"></div>
+          </div>
           <button 
             onClick={onClose}
-            className="px-12 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-brand-blue transition-colors"
+            className="px-16 py-5 bg-white text-black font-bold uppercase tracking-[0.3em] hover:bg-brand-blue hover:text-white transition-all duration-300 sticker-shadow hover:-translate-y-2"
           >
             Back to Home
           </button>
@@ -252,7 +297,7 @@ export default function App() {
               }}
             >
               <img 
-                src="https://photos.fife.usercontent.google.com/pw/AP1GczPg74W3pVLnICHEOT6OLVQ4ykwpujyVJdws__44togvtBXWGPtFzK6C=w1600-h1200-s-no-gm?authuser=3" 
+                src="https://raw.githubusercontent.com/akshathashruthiram/Akshatha-Portfolio/a1cc784e2a6f6d66b5ce9304d4b8f9cad85cb33d/IMG-20250131-WA0106.jpg" 
                 alt="Portrait" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
